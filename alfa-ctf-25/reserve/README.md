@@ -92,7 +92,7 @@ call 0x1a
       50:    call 0x26        ; call bpf_skb_change_tail(skb, len=(skb->len+4), flags=0)
 ```
 Сейчас в `r6` хранится контекст, а контекст у eBPF traffic control программ - это [`struct __sk_buff`](https://elixir.bootlin.com/linux/v6.15.1/source/include/uapi/linux/bpf.h#L6250), по офсету `0x0` лежит поле `len`.  
-Если не удалось, то eBPF программа выйдет со кодом 2 - это DROP пакета.
+Если не удалось, то eBPF программа выйдет с кодом 2 - это DROP пакета.
 
 Дальше генерируется рандом, сейчас он будет лежать на стеке `r10 - 0x38`:
 ```asm
